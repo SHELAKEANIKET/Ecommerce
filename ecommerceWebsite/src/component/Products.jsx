@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
-// import { fetchProductsData } from '../api/products';
-import { shoesData } from "../api/products";
 import { FaRegHeart } from "react-icons/fa";
+import { fetchProducts } from "../api/products";
 
 function Products() {
   const [products, setProducts] = useState([]);
 
+  // useEffect(() => {
+  //   setProducts(shoesData);
+  // }, []);
 
   useEffect(() => {
-    setProducts(shoesData);
+    const fetchData = async () => {
+      try {
+        const data = await fetchProducts("shoes");
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching countries data:", error);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
