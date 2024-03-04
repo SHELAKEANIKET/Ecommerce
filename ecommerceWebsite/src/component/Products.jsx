@@ -5,10 +5,6 @@ import { fetchProducts } from "../api/products";
 function Products() {
   const [products, setProducts] = useState([]);
 
-  // useEffect(() => {
-  //   setProducts(shoesData);
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
