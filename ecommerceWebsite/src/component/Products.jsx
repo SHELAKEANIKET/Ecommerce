@@ -8,7 +8,7 @@ function Products() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchProducts("shoes");
+        const data = await fetchProducts("allproducts");
         setProducts(data);
       } catch (error) {
         console.error("Error fetching countries data:", error);
@@ -18,7 +18,7 @@ function Products() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center flex-wrap py-10 px-5 gap-10 bg-white">
+    <div className="flex justify-center items-center flex-wrap my-20 py-10 px-5 gap-10">
       {products.map((product) => (
         <div
           key={product.productId}
