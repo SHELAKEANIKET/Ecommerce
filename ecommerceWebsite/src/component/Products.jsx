@@ -5,15 +5,17 @@ import { fetchProducts } from "../api/products";
 function Products() {
   const [products, setProducts] = useState([]);
 
+
+  const fetchData = async () => {
+    try {
+      const data = await fetchProducts("allproducts");
+      setProducts(data);
+    } catch (error) {
+      console.error("Something went wrong:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchProducts("allproducts");
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching countries data:", error);
-      }
-    };
     fetchData();
   }, []);
 
@@ -22,7 +24,7 @@ function Products() {
       {products.map((product) => (
         <div
           key={product.productId}
-          className="h-96 w-80 p-5 flex justify-center items-center flex-col bg-[#F6F6F6] shadow-md rounded-2xl gap-2 hover:shadow-lg"
+          className="h-96 w-80 p-5 flex justify-center items-center flex-col bg-[#F6F6F6] shadow-md rounded-2xl gap-2 hover:shadow-xl"
         >
           <img
             className="w-60 h-64"
